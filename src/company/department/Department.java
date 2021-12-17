@@ -1,14 +1,14 @@
 package company.department;
 
-import java.util.HashMap;
-
 import company.Employee;
 import company.Project;
 
-public class Department { 
+import java.util.HashMap;
+
+public class Department {
   private String id;
   private String name;
-  
+
   private HashMap<String, Employee> employees = new HashMap<String, Employee>();
   private HashMap<String, Project> projects = new HashMap<String, Project>();
 
@@ -17,10 +17,15 @@ public class Department {
     this.name = name;
   }
 
-  public String getId() { return id; }
-  public String getName() { return name; }
+  public String getId() {
+    return id;
+  }
 
-	public void addEmployee(Employee e) {
+  public String getName() {
+    return name;
+  }
+
+  public void addEmployee(Employee e) {
     employees.put(e.getId(), e);
   }
 
@@ -28,11 +33,15 @@ public class Department {
     return employees.get(id);
   }
 
+  public HashMap<String, Employee> getEmployees() {
+    return employees;
+  }
+
   public String toString() {
-    String msg = "::"+getName()+"::";
+    String msg = "::" + getName() + "::";
     msg += "\n\t== Employees ==";
     for (Employee e : employees.values()) {
-      msg += "\n\t\t  - "+e.getId()+": "+e.getName();
+      msg += "\n\t\t  - " + e.getId() + ": " + e.getName();
     }
     return msg;
   }

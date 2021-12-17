@@ -1,10 +1,11 @@
 package company;
-import java.util.HashMap;
 
 import company.department.Department;
 
+import java.util.HashMap;
+
 public class Company {
-  private HashMap<String,Department> departments = new HashMap<String,Department>();
+  private HashMap<String, Department> departments = new HashMap<String, Department>();
   private String name;
 
   public Company(String name) {
@@ -15,7 +16,7 @@ public class Company {
     return name;
   }
 
-	public void addDepartment(Department d) {
+  public void addDepartment(Department d) {
     departments.put(d.getId(), d);
   }
 
@@ -23,11 +24,15 @@ public class Company {
     return departments.get(id);
   }
 
+  public HashMap<String, Department> getDepartments() {
+    return departments;
+  }
+
   public String toString() {
-    String msg = "["+getName()+"]";
+    String msg = "[" + getName() + "]";
     msg += "\n== Departments ==";
     for (Department d : departments.values()) {
-      msg += "\n    - "+d;
+      msg += "\n    - " + d;
     }
     return msg;
   }

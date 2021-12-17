@@ -1,7 +1,8 @@
 package company;
-import java.util.HashMap;
 
 import company.department.Department;
+
+import java.util.HashMap;
 
 public class Project {
   // Mandatory attributes
@@ -14,10 +15,10 @@ public class Project {
   private HashMap<String, Employee> employees = new HashMap<String, Employee>();
 
   // Constructor
-  public Project(String id, String name, double budget,Department department) {
+  public Project(String id, String name, double budget, Department department) {
     // Guard condition
     if (budget < 0) {
-      throw new IllegalArgumentException("Budget cannot be negative. "+budget);
+      throw new IllegalArgumentException("Budget cannot be negative. " + budget);
     }
 
     this.id = id;
@@ -28,7 +29,7 @@ public class Project {
   }
 
   public String toString() {
-    return id+"\t"+name+"\t"+budget+"\t"+department.getName();
+    return id + "\t" + name + "\t" + budget + "\t" + department.getName();
   }
 
   public Department getDepartment() {
@@ -43,7 +44,7 @@ public class Project {
   public String getId() {
     return id;
   }
-  
+
   public void setId(String id) {
     this.id = id;
   }
@@ -78,7 +79,7 @@ public class Project {
 
   public double getMonthlyCost() {
     double totalCost = 0;
-    for(Employee employee : employees.values()) {
+    for (Employee employee : employees.values()) {
       totalCost += employee.getSalary();
     }
     return totalCost;

@@ -1,4 +1,5 @@
 package company;
+
 import company.department.Department;
 
 abstract public class Employee {
@@ -24,24 +25,7 @@ abstract public class Employee {
   }
 
   public Employee(String id, String name, double salary, Department department) {
-    this(id,name,salary,0,department);
-  } 
-
-  // Mutators (change/write)
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public void setSalary(double salary) {
-    this.salary = salary;
-  }
-
-  public void setYearOfBirth(int yearOfBirth) {
-    this.yearOfBirth = yearOfBirth;
+    this(id, name, salary, 0, department);
   }
 
   // Accessors (read)
@@ -49,8 +33,17 @@ abstract public class Employee {
     return id;
   }
 
+  // Mutators (change/write)
+  public void setId(String id) {
+    this.id = id;
+  }
+
   public String getName() {
     return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public double getSalary() {
@@ -58,8 +51,16 @@ abstract public class Employee {
     // return this.salary; // sane result as return salary
   }
 
+  public void setSalary(double salary) {
+    this.salary = salary;
+  }
+
   public int getYearOfBirth() {
     return yearOfBirth;
+  }
+
+  public void setYearOfBirth(int yearOfBirth) {
+    this.yearOfBirth = yearOfBirth;
   }
 
   public int getAge() {
