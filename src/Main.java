@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
-  private static int lineLength = 114;
-  private static String line1 = "-".repeat(lineLength);
-  private static String line2 = "=".repeat(lineLength);
+  private static final int lineLength = 114;
+  private static final String line1 = "-".repeat(lineLength);
+  private static final String line2 = "=".repeat(lineLength);
 
   public static void main(String[] args) {
     Company company = new Company("KOOT");
@@ -140,7 +140,13 @@ public class Main {
       double totalSalary = 0;
       for (Employee e : d.getEmployees().values()) {
         totalSalary += e.getSalary();
-        System.out.printf(template, e.getId(), e.getName(), e.getYearOfBirth(), e.getSalary());
+        System.out.printf(
+          template,
+          e.getId(),
+          e.getName(),
+          e.getYearOfBirth(),
+          e.getSalary()
+        );
       }
       System.out.println(line1);
       System.out.printf(template, "", "", "Total Salary", totalSalary);
