@@ -132,7 +132,7 @@ public class Main {
     System.out.println("2. Show the list of employees in each department.");
     System.out.println(line2);
     for (Department d : company.getDepartments().values()) {
-      System.out.printf("   Department: %s\n", d.getName());
+      System.out.printf("   Employees In %s Department\n", d.getName());
       System.out.println(line1);
       String template = "          %-5s   %-10s%20s%15s\n";
       System.out.printf(template, "ID", "Name", "Year Of Birth", "Salary");
@@ -155,7 +155,7 @@ public class Main {
     for (Department d : c.getDepartments().values()) {
       HashMap<String, Project> projects = d.getProjects();
       if (projects.size() > 0) {
-        System.out.println("   Department: " + d.getName());
+        System.out.printf("   Projects In %s Department\n", d.getName());
         System.out.println(line1);
         System.out.println("          Projects");
         System.out.println(line1);
