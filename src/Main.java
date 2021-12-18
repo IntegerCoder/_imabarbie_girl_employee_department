@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
-  private static int lineLength = 100;
+  private static int lineLength = 104;
   private static String line1 = "-".repeat(lineLength);
   private static String line2 = "=".repeat(lineLength);
 
@@ -31,6 +31,12 @@ public class Main {
     Permanent e6 = new Permanent("25002", "Bell", 23000, 1995, seDept);
 
     ArrayList<Employee> employees = new ArrayList<Employee>();
+    employees.add(e1);
+    employees.add(e2);
+    employees.add(e3);
+    employees.add(e4);
+    employees.add(e5);
+    employees.add(e6);
 
     Project p1 = new Project("P001", "Build Food Delivery App", 1000000, seDept);
     Project p2 = new Project("P002", "Prepare a Web Server", 200000, seDept);
@@ -48,9 +54,66 @@ public class Main {
     p4.addEmployee(e5);
     p4.addEmployee(e6);
 
+    showEmployeesByTypesOfEmployment(employees);
+    System.out.println();
     showDepartmentsAndEmployees(company);
     System.out.println();
     showDepartmentsAndProjects(company);
+  }
+
+  private static void showEmployeesByTypesOfEmployment(ArrayList<Employee> employees) {
+    String template = "%-5s   %-10s%10s%15s   %-20s%8s";
+    System.out.println(line2);
+    System.out.println("Show the list of employees by type of employment.");
+    System.out.println(line2);
+    {
+      System.out.println("Permanent Employees");
+      String permTemplate = template + "%15s\n";
+      System.out.println(line1);
+      System.out.printf(permTemplate,
+        "ID", "Name", "Salary", "Year Of Birth", "Department", "Age", "Years Left");
+      System.out.println(line1);
+      for (Employee employee : employees) {
+        if (employee instanceof Permanent) {
+          System.out.printf(
+            permTemplate,
+            employee.getId(),
+            employee.getName(),
+            employee.getSalary(),
+            employee.getYearOfBirth(),
+            employee.getDepartment().getName(),
+            employee.getAge(),
+            employee.getServiceYearsLeft()
+          );
+        }
+      }
+    }
+    System.out.println(line2);
+    {
+      System.out.println("Temporary Employees");
+      String tempTemplate = template + "%15s%15s\n";
+      System.out.println(line1);
+      System.out.printf(tempTemplate,
+        "ID", "Name", "Salary", "Year Of Birth", "Department", "Age", "Start Date", "End Date");
+      System.out.println(line1);
+      for (Employee employee : employees) {
+        if (employee instanceof Temporary) {
+          Temporary temp = (Temporary) employee;
+          System.out.printf(
+            tempTemplate,
+            temp.getId(),
+            temp.getName(),
+            temp.getSalary(),
+            temp.getYearOfBirth(),
+            temp.getDepartment().getName(),
+            temp.getAge(),
+            temp.getStartDate(),
+            temp.getEndDate()
+          );
+        }
+      }
+    }
+    System.out.println(line2);
   }
 
   private static void showDepartmentsAndProjects(Company c) {

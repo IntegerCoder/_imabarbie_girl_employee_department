@@ -11,4 +11,12 @@ public class Temporary extends Employee {
     this.startDate = startDate;
     this.endDate = endDate;
   }
+
+  public String getStartDate() {
+    return startDate;
+  }
+
+  public String getEndDate() {
+    return endDate;
+  }
 }

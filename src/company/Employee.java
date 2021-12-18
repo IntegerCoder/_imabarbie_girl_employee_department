@@ -63,6 +63,10 @@ abstract public class Employee {
     this.yearOfBirth = yearOfBirth;
   }
 
+  public Department getDepartment() {
+    return department;
+  }
+
   public int getAge() {
     if (yearOfBirth == 0) {
       return 0;
