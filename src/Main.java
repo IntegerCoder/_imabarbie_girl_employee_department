@@ -160,12 +160,18 @@ public class Main {
       if (projects.size() > 0) {
         System.out.printf("   Projects In %s Department\n", department.getName());
         System.out.println(line1);
-        String projectTemplate = "          %-10s%-30s%15s%25s\n";
-        System.out.printf(projectTemplate, "ID", "Name", "Budget", "Number of Employees");
+        String projectTemplate = "          %-10s%-30s%15s%25s%20s\n";
+        System.out.printf(projectTemplate, "ID", "Name", "Budget", "Number of Employees", "Monthly Cost");
         System.out.println(line1);
         for (Project project : projects.values()) {
-          int numEmps = project.getEmployees().size();
-          System.out.printf(projectTemplate, project.getId(), project.getName(), project.getBudget(), numEmps);
+          System.out.printf(
+            projectTemplate,
+            project.getId(),
+            project.getName(),
+            project.getBudget(),
+            project.getEmployees().size(),
+            project.getMonthlyCost()
+          );
         }
         System.out.println(line2);
       }
@@ -186,6 +192,7 @@ public class Main {
       System.out.printf(projectTemplate, "Budget", project.getBudget());
       System.out.printf(projectTemplate, "Department", project.getDepartment().getName());
       System.out.printf(projectTemplate, "Number Of Employees", employees.size());
+      System.out.printf(projectTemplate, "Monthly Cost", project.getMonthlyCost());
       System.out.println(line1);
       System.out.printf("   Employees In Project %s\n", project.getName());
       System.out.println(line1);
