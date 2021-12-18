@@ -2,10 +2,11 @@ package company;
 
 import company.department.Department;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Company {
-  private HashMap<String, Department> departments = new HashMap<String, Department>();
+  private Map<String, Department> departments = new LinkedHashMap<String, Department>();
   private String name;
 
   public Company(String name) {
@@ -24,7 +25,7 @@ public class Company {
     return departments.get(id);
   }
 
-  public HashMap<String, Department> getDepartments() {
+  public Map<String, Department> getDepartments() {
     return departments;
   }
 

@@ -2,7 +2,8 @@ package company;
 
 import company.department.Department;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Project {
   // Mandatory attributes
@@ -12,7 +13,7 @@ public class Project {
   private Department department;
 
   // Aggregate attributes
-  private HashMap<String, Employee> employees = new HashMap<String, Employee>();
+  private Map<String, Employee> employees = new LinkedHashMap<String, Employee>();
 
   // Constructor
   public Project(String id, String name, double budget, Department department) {
@@ -65,7 +66,7 @@ public class Project {
     this.budget = budget;
   }
 
-  public HashMap<String, Employee> getEmployees() {
+  public Map<String, Employee> getEmployees() {
     return employees;
   }
 

@@ -9,7 +9,8 @@ import company.department.SE;
 import company.department.Sales;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class TestProgram {
   private static final int lineLength = 114;
@@ -34,7 +35,7 @@ public class TestProgram {
     Permanent e5 = new Permanent("25001", "Bill", 25000, 1991, seDept);
     Temporary e6 = new Temporary("25002", "Bell", 23000, 1995, seDept, "01/12/2021", "31/03/2022");
 
-    ArrayList<Employee> employees = new ArrayList<Employee>();
+    List<Employee> employees = new ArrayList<Employee>();
     employees.add(e1);
     employees.add(e2);
     employees.add(e3);
@@ -47,7 +48,7 @@ public class TestProgram {
     Project p3 = new Project("P003", "Communication Skills Training", 150000, salesDept);
     Project p4 = new Project("P004", "Sales Office Renovation", 500000, salesDept);
 
-    ArrayList<Project> projects = new ArrayList<Project>();
+    List<Project> projects = new ArrayList<Project>();
     projects.add(p1);
     projects.add(p2);
     projects.add(p3);
@@ -76,7 +77,7 @@ public class TestProgram {
     showProjectsAndEmployees(projects);
   }
 
-  private static void showEmployeesByTypesOfEmployment(ArrayList<Employee> employees) {
+  private static void showEmployeesByTypesOfEmployment(List<Employee> employees) {
     String template = "          %-5s   %-10s%10s   %-20s%15s%8s";
     System.out.println(line2);
     System.out.println("1. Show the list of employees by type of employment.");
@@ -167,7 +168,7 @@ public class TestProgram {
     System.out.println("3. Show the list of projects in each department.");
     System.out.println(line2);
     for (Department department : company.getDepartments().values()) {
-      HashMap<String, Project> projects = department.getProjects();
+      Map<String, Project> projects = department.getProjects();
       if (projects.size() > 0) {
         System.out.printf("   Projects In %s Department\n", department.getName());
         System.out.println(line1);
@@ -189,12 +190,12 @@ public class TestProgram {
     }
   }
 
-  private static void showProjectsAndEmployees(ArrayList<Project> projects) {
+  private static void showProjectsAndEmployees(List<Project> projects) {
     System.out.println(line2);
     System.out.println("4. Show the list of projects and the associated employees.");
     System.out.println(line2);
     for (Project project : projects) {
-      HashMap<String, Employee> employees = project.getEmployees();
+      Map<String, Employee> employees = project.getEmployees();
       String projectTemplate = "          %19s: %s\n";
       System.out.printf("   Project %s\n", project.getName());
       System.out.println(line1);

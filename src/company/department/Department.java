@@ -3,14 +3,15 @@ package company.department;
 import company.Employee;
 import company.Project;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Department {
   private String id;
   private String name;
 
-  private HashMap<String, Employee> employees = new HashMap<String, Employee>();
-  private HashMap<String, Project> projects = new HashMap<String, Project>();
+  private Map<String, Employee> employees = new LinkedHashMap<String, Employee>();
+  private Map<String, Project> projects = new LinkedHashMap<String, Project>();
 
   public Department(String id, String name) {
     this.id = id;
@@ -33,7 +34,7 @@ public class Department {
     return employees.get(id);
   }
 
-  public HashMap<String, Employee> getEmployees() {
+  public Map<String, Employee> getEmployees() {
     return employees;
   }
 
@@ -50,8 +51,7 @@ public class Department {
     projects.put(project.getId(), project);
   }
 
-  public HashMap<String, Project> getProjects() {
+  public Map<String, Project> getProjects() {
     return projects;
   }
 } 
-  
