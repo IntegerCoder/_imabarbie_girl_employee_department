@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
-  private static int lineLength = 104;
+  private static int lineLength = 114;
   private static String line1 = "-".repeat(lineLength);
   private static String line2 = "=".repeat(lineLength);
 
@@ -43,6 +43,12 @@ public class Main {
     Project p3 = new Project("P003", "Communication Skills Training", 150000, salesDept);
     Project p4 = new Project("P004", "Sales Office Renovation", 500000, salesDept);
 
+    ArrayList<Project> projects = new ArrayList<Project>();
+    projects.add(p1);
+    projects.add(p2);
+    projects.add(p3);
+    projects.add(p4);
+
     p1.addEmployee(e1);
     p1.addEmployee(e2);
     p2.addEmployee(e3);
@@ -59,10 +65,12 @@ public class Main {
     showDepartmentsAndEmployees(company);
     System.out.println();
     showDepartmentsAndProjects(company);
+    System.out.println();
+    showProjectsAndEmployees(projects);
   }
 
   private static void showEmployeesByTypesOfEmployment(ArrayList<Employee> employees) {
-    String template = "%-5s   %-10s%10s%15s   %-20s%8s";
+    String template = "          %-5s   %-10s%10s%15s   %-20s%8s";
     System.out.println(line2);
     System.out.println("Show the list of employees by type of employment.");
     System.out.println(line2);
@@ -154,16 +162,54 @@ public class Main {
     for (Department d : company.getDepartments().values()) {
       System.out.printf("Department: %s\n", d.getName());
       System.out.println(line1);
-      String template = "%10s%20s%15s\n";
-      System.out.printf(template, "Name", "Year Of Birth", "Salary");
+      String template = "          %-5s   %-10s%20s%15s\n";
+      System.out.printf(template, "ID", "Name", "Year Of Birth", "Salary");
       System.out.println(line1);
       double totalSalary = 0;
       for (Employee e : d.getEmployees().values()) {
         totalSalary += e.getSalary();
-        System.out.printf(template, e.getName(), e.getYearOfBirth(), e.getSalary());
+        System.out.printf(template, e.getId(), e.getName(), e.getYearOfBirth(), e.getSalary());
       }
       System.out.println(line1);
-      System.out.printf(template, "", "Total Salary", totalSalary);
+      System.out.printf(template, "", "", "Total Salary", totalSalary);
+      System.out.println(line2);
+    }
+  }
+
+  private static void showProjectsAndEmployees(ArrayList<Project> projects) {
+    System.out.println(line2);
+    System.out.println("Show the list of projects and the associated employees.");
+    System.out.println(line2);
+    for (Project project : projects) {
+      HashMap<String, Employee> employees = project.getEmployees();
+      String projectTemplate = "          %19s: %s\n";
+      System.out.printf("Project %s\n", project.getName());
+      System.out.println(line1);
+      System.out.printf(projectTemplate, "ID", project.getId());
+      System.out.printf(projectTemplate, "Name", project.getName());
+      System.out.printf(projectTemplate, "Budget", project.getBudget());
+      System.out.printf(projectTemplate, "Department", project.getDepartment().getName());
+      System.out.printf(projectTemplate, "Number Of Employees", employees.size());
+      System.out.println(line1);
+      System.out.printf("Employees In Project %s\n", project.getName());
+      System.out.println(line1);
+      String employeeTemplate = "          %-5s   %-10s%10s%15s   %-20s%8s\n";
+      System.out.printf(employeeTemplate, "ID", "Name", "Salary", "Year Of Birth", "Department", "Age", "Years Left");
+      System.out.println(line1);
+      for (Employee employee : employees.values()) {
+        if (employee instanceof Permanent) {
+          System.out.printf(
+            employeeTemplate,
+            employee.getId(),
+            employee.getName(),
+            employee.getSalary(),
+            employee.getYearOfBirth(),
+            employee.getDepartment().getName(),
+            employee.getAge(),
+            employee.getServiceYearsLeft()
+          );
+        }
+      }
       System.out.println(line2);
     }
   }
