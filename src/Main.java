@@ -73,7 +73,7 @@ public class Main {
   }
 
   private static void showEmployeesByTypesOfEmployment(ArrayList<Employee> employees) {
-    String template = "          %-5s   %-10s%10s%15s   %-20s%8s";
+    String template = "          %-5s   %-10s%10s   %-20s%15s%8s";
     System.out.println(line2);
     System.out.println("1. Show the list of employees by type of employment.");
     System.out.println(line2);
@@ -82,7 +82,7 @@ public class Main {
       String permTemplate = template + "%15s\n";
       System.out.println(line1);
       System.out.printf(permTemplate,
-        "ID", "Name", "Salary", "Year Of Birth", "Department", "Age", "Years Left");
+        "ID", "Name", "Salary", "Department", "Year Of Birth", "Age", "Years Left");
       System.out.println(line1);
       for (Employee employee : employees) {
         if (employee instanceof Permanent) {
@@ -91,8 +91,8 @@ public class Main {
             employee.getId(),
             employee.getName(),
             employee.getSalary(),
-            employee.getYearOfBirth(),
             employee.getDepartment().getName(),
+            employee.getYearOfBirth(),
             employee.getAge(),
             employee.getServiceYearsLeft()
           );
@@ -105,7 +105,7 @@ public class Main {
       String tempTemplate = template + "%15s%15s\n";
       System.out.println(line1);
       System.out.printf(tempTemplate,
-        "ID", "Name", "Salary", "Year Of Birth", "Department", "Age", "Start Date", "End Date");
+        "ID", "Name", "Salary", "Department", "Year Of Birth", "Age", "Start Date", "End Date");
       System.out.println(line1);
       for (Employee employee : employees) {
         if (employee instanceof Temporary) {
@@ -115,8 +115,8 @@ public class Main {
             temp.getId(),
             temp.getName(),
             temp.getSalary(),
-            temp.getYearOfBirth(),
             temp.getDepartment().getName(),
+            temp.getYearOfBirth(),
             temp.getAge(),
             temp.getStartDate(),
             temp.getEndDate()
@@ -134,8 +134,8 @@ public class Main {
     for (Department d : company.getDepartments().values()) {
       System.out.printf("   Employees In %s Department\n", d.getName());
       System.out.println(line1);
-      String template = "          %-5s   %-10s%20s%15s\n";
-      System.out.printf(template, "ID", "Name", "Year Of Birth", "Salary");
+      String template = "          %-5s   %-10s%10s%20s%15s\n";
+      System.out.printf(template, "ID", "Name", "Salary", "Year Of Birth", "Age");
       System.out.println(line1);
       double totalSalary = 0;
       for (Employee e : d.getEmployees().values()) {
@@ -144,12 +144,13 @@ public class Main {
           template,
           e.getId(),
           e.getName(),
+          e.getSalary(),
           e.getYearOfBirth(),
-          e.getSalary()
+          e.getAge()
         );
       }
       System.out.println(line1);
-      System.out.printf(template, "", "", "Total Salary", totalSalary);
+      System.out.printf(template, "", "", "", "Total Salary", totalSalary);
       System.out.println(line2);
     }
   }
