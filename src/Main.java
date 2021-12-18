@@ -62,9 +62,12 @@ public class Main {
 
     showEmployeesByTypesOfEmployment(employees);
     System.out.println();
+    System.out.println();
     showDepartmentsAndEmployees(company);
     System.out.println();
+    System.out.println();
     showDepartmentsAndProjects(company);
+    System.out.println();
     System.out.println();
     showProjectsAndEmployees(projects);
   }
@@ -72,10 +75,10 @@ public class Main {
   private static void showEmployeesByTypesOfEmployment(ArrayList<Employee> employees) {
     String template = "          %-5s   %-10s%10s%15s   %-20s%8s";
     System.out.println(line2);
-    System.out.println("Show the list of employees by type of employment.");
+    System.out.println("1. Show the list of employees by type of employment.");
     System.out.println(line2);
     {
-      System.out.println("Permanent Employees");
+      System.out.println("   Permanent Employees");
       String permTemplate = template + "%15s\n";
       System.out.println(line1);
       System.out.printf(permTemplate,
@@ -98,7 +101,7 @@ public class Main {
     }
     System.out.println(line2);
     {
-      System.out.println("Temporary Employees");
+      System.out.println("   Temporary Employees");
       String tempTemplate = template + "%15s%15s\n";
       System.out.println(line1);
       System.out.printf(tempTemplate,
@@ -124,14 +127,35 @@ public class Main {
     System.out.println(line2);
   }
 
+  private static void showDepartmentsAndEmployees(Company company) {
+    System.out.println(line2);
+    System.out.println("2. Show the list of employees in each department.");
+    System.out.println(line2);
+    for (Department d : company.getDepartments().values()) {
+      System.out.printf("   Department: %s\n", d.getName());
+      System.out.println(line1);
+      String template = "          %-5s   %-10s%20s%15s\n";
+      System.out.printf(template, "ID", "Name", "Year Of Birth", "Salary");
+      System.out.println(line1);
+      double totalSalary = 0;
+      for (Employee e : d.getEmployees().values()) {
+        totalSalary += e.getSalary();
+        System.out.printf(template, e.getId(), e.getName(), e.getYearOfBirth(), e.getSalary());
+      }
+      System.out.println(line1);
+      System.out.printf(template, "", "", "Total Salary", totalSalary);
+      System.out.println(line2);
+    }
+  }
+
   private static void showDepartmentsAndProjects(Company c) {
     System.out.println(line2);
-    System.out.println("Show the list of projects in each department.");
+    System.out.println("3. Show the list of projects in each department.");
     System.out.println(line2);
     for (Department d : c.getDepartments().values()) {
       HashMap<String, Project> projects = d.getProjects();
       if (projects.size() > 0) {
-        System.out.println("Department: " + d.getName());
+        System.out.println("   Department: " + d.getName());
         System.out.println(line1);
         System.out.println("          Projects");
         System.out.println(line1);
@@ -155,35 +179,14 @@ public class Main {
     }
   }
 
-  private static void showDepartmentsAndEmployees(Company company) {
-    System.out.println(line2);
-    System.out.println("Show the list of employees in each department.");
-    System.out.println(line2);
-    for (Department d : company.getDepartments().values()) {
-      System.out.printf("Department: %s\n", d.getName());
-      System.out.println(line1);
-      String template = "          %-5s   %-10s%20s%15s\n";
-      System.out.printf(template, "ID", "Name", "Year Of Birth", "Salary");
-      System.out.println(line1);
-      double totalSalary = 0;
-      for (Employee e : d.getEmployees().values()) {
-        totalSalary += e.getSalary();
-        System.out.printf(template, e.getId(), e.getName(), e.getYearOfBirth(), e.getSalary());
-      }
-      System.out.println(line1);
-      System.out.printf(template, "", "", "Total Salary", totalSalary);
-      System.out.println(line2);
-    }
-  }
-
   private static void showProjectsAndEmployees(ArrayList<Project> projects) {
     System.out.println(line2);
-    System.out.println("Show the list of projects and the associated employees.");
+    System.out.println("4. Show the list of projects and the associated employees.");
     System.out.println(line2);
     for (Project project : projects) {
       HashMap<String, Employee> employees = project.getEmployees();
       String projectTemplate = "          %19s: %s\n";
-      System.out.printf("Project %s\n", project.getName());
+      System.out.printf("   Project %s\n", project.getName());
       System.out.println(line1);
       System.out.printf(projectTemplate, "ID", project.getId());
       System.out.printf(projectTemplate, "Name", project.getName());
@@ -191,7 +194,7 @@ public class Main {
       System.out.printf(projectTemplate, "Department", project.getDepartment().getName());
       System.out.printf(projectTemplate, "Number Of Employees", employees.size());
       System.out.println(line1);
-      System.out.printf("Employees In Project %s\n", project.getName());
+      System.out.printf("   Employees In Project %s\n", project.getName());
       System.out.println(line1);
       String employeeTemplate = "          %-5s   %-10s%10s%15s   %-20s%8s\n";
       System.out.printf(employeeTemplate, "ID", "Name", "Salary", "Year Of Birth", "Department", "Age", "Years Left");
