@@ -203,19 +203,24 @@ public class Main {
       System.out.println(line1);
       System.out.printf("   Employees In Project %s\n", project.getName());
       System.out.println(line1);
-      String employeeTemplate = "          %-5s   %-10s%10s%15s   %-20s%8s\n";
-      System.out.printf(employeeTemplate, "ID", "Name", "Salary", "Year Of Birth", "Department", "Age", "Years Left");
+      String employeeTemplate = "          %-5s   %-10s%10s%20s%15s     %s\n";
+      System.out.printf(employeeTemplate, "ID", "Name", "Salary", "Year Of Birth", "Age", "Type Of Employment");
       System.out.println(line1);
       for (Employee employee : employees.values()) {
+        String typeOfEmployment = "";
+        if (employee instanceof Permanent) {
+          typeOfEmployment = "Permanent";
+        } else if (employee instanceof Temporary) {
+          typeOfEmployment = "Temporary";
+        }
         System.out.printf(
           employeeTemplate,
           employee.getId(),
           employee.getName(),
           employee.getSalary(),
           employee.getYearOfBirth(),
-          employee.getDepartment().getName(),
           employee.getAge(),
-          employee.getServiceYearsLeft()
+          typeOfEmployment
         );
       }
       System.out.println(line2);
