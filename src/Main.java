@@ -160,8 +160,6 @@ public class Main {
       if (projects.size() > 0) {
         System.out.printf("   Projects In %s Department\n", d.getName());
         System.out.println(line1);
-        System.out.println("          Projects");
-        System.out.println(line1);
         String projectTemplate = "          %-10s%-30s%15s%25s\n";
         System.out.printf(projectTemplate, "ID", "Name", "Budget", "Number of Employees");
         System.out.println(line1);
