@@ -134,17 +134,24 @@ public class Main {
     for (Department department : company.getDepartments().values()) {
       System.out.printf("   Employees In %s Department\n", department.getName());
       System.out.println(line1);
-      String template = "          %-5s   %-10s%10s%20s%15s\n";
-      System.out.printf(template, "ID", "Name", "Salary", "Year Of Birth", "Age");
+      String template = "          %-5s   %-10s%10s%20s%15s     %s\n";
+      System.out.printf(template, "ID", "Name", "Salary", "Year Of Birth", "Age", "Type Of Employment");
       System.out.println(line1);
       for (Employee employee : department.getEmployees().values()) {
+        String typeOfEmployment = "";
+        if (employee instanceof Permanent) {
+          typeOfEmployment = "Permanent";
+        } else if (employee instanceof Temporary) {
+          typeOfEmployment = "Temporary";
+        }
         System.out.printf(
           template,
           employee.getId(),
           employee.getName(),
           employee.getSalary(),
           employee.getYearOfBirth(),
-          employee.getAge()
+          employee.getAge(),
+          typeOfEmployment
         );
       }
       System.out.println(line2);
