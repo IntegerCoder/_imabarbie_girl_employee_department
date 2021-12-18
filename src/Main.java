@@ -137,9 +137,7 @@ public class Main {
       String template = "          %-5s   %-10s%10s%20s%15s\n";
       System.out.printf(template, "ID", "Name", "Salary", "Year Of Birth", "Age");
       System.out.println(line1);
-      double totalSalary = 0;
       for (Employee e : d.getEmployees().values()) {
-        totalSalary += e.getSalary();
         System.out.printf(
           template,
           e.getId(),
@@ -149,8 +147,6 @@ public class Main {
           e.getAge()
         );
       }
-      System.out.println(line1);
-      System.out.printf(template, "", "", "", "Total Salary", totalSalary);
       System.out.println(line2);
     }
   }
@@ -169,18 +165,10 @@ public class Main {
         String projectTemplate = "          %-10s%-30s%15s%25s\n";
         System.out.printf(projectTemplate, "ID", "Name", "Budget", "Number of Employees");
         System.out.println(line1);
-        double totalBudget = 0;
-        int totalEmployees = 0;
         for (Project project : projects.values()) {
           int numEmps = project.getEmployees().size();
           System.out.printf(projectTemplate, project.getId(), project.getName(), project.getBudget(), numEmps);
-          totalBudget += project.getBudget();
-          totalEmployees += project.getEmployees().size();
         }
-        System.out.println(line1);
-        String summaryTemplate = "%65s%25s\n";
-        System.out.printf(summaryTemplate, "Total Budget:", totalBudget);
-        System.out.printf(summaryTemplate, "Total Employees:", totalEmployees);
         System.out.println(line2);
       }
     }
