@@ -193,18 +193,16 @@ public class Main {
       System.out.printf(employeeTemplate, "ID", "Name", "Salary", "Year Of Birth", "Department", "Age", "Years Left");
       System.out.println(line1);
       for (Employee employee : employees.values()) {
-        if (employee instanceof Permanent) {
-          System.out.printf(
-            employeeTemplate,
-            employee.getId(),
-            employee.getName(),
-            employee.getSalary(),
-            employee.getYearOfBirth(),
-            employee.getDepartment().getName(),
-            employee.getAge(),
-            employee.getServiceYearsLeft()
-          );
-        }
+        System.out.printf(
+          employeeTemplate,
+          employee.getId(),
+          employee.getName(),
+          employee.getSalary(),
+          employee.getYearOfBirth(),
+          employee.getDepartment().getName(),
+          employee.getAge(),
+          employee.getServiceYearsLeft()
+        );
       }
       System.out.println(line2);
     }
