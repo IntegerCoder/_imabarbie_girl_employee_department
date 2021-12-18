@@ -131,34 +131,34 @@ public class Main {
     System.out.println(line2);
     System.out.println("2. Show the list of employees in each department.");
     System.out.println(line2);
-    for (Department d : company.getDepartments().values()) {
-      System.out.printf("   Employees In %s Department\n", d.getName());
+    for (Department department : company.getDepartments().values()) {
+      System.out.printf("   Employees In %s Department\n", department.getName());
       System.out.println(line1);
       String template = "          %-5s   %-10s%10s%20s%15s\n";
       System.out.printf(template, "ID", "Name", "Salary", "Year Of Birth", "Age");
       System.out.println(line1);
-      for (Employee e : d.getEmployees().values()) {
+      for (Employee employee : department.getEmployees().values()) {
         System.out.printf(
           template,
-          e.getId(),
-          e.getName(),
-          e.getSalary(),
-          e.getYearOfBirth(),
-          e.getAge()
+          employee.getId(),
+          employee.getName(),
+          employee.getSalary(),
+          employee.getYearOfBirth(),
+          employee.getAge()
         );
       }
       System.out.println(line2);
     }
   }
 
-  private static void showDepartmentsAndProjects(Company c) {
+  private static void showDepartmentsAndProjects(Company company) {
     System.out.println(line2);
     System.out.println("3. Show the list of projects in each department.");
     System.out.println(line2);
-    for (Department d : c.getDepartments().values()) {
-      HashMap<String, Project> projects = d.getProjects();
+    for (Department department : company.getDepartments().values()) {
+      HashMap<String, Project> projects = department.getProjects();
       if (projects.size() > 0) {
-        System.out.printf("   Projects In %s Department\n", d.getName());
+        System.out.printf("   Projects In %s Department\n", department.getName());
         System.out.println(line1);
         String projectTemplate = "          %-10s%-30s%15s%25s\n";
         System.out.printf(projectTemplate, "ID", "Name", "Budget", "Number of Employees");
