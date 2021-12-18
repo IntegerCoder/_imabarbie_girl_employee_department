@@ -25,10 +25,10 @@ public class Main {
 
     Permanent e1 = new Permanent("19001", "Jack", 20000, 1985, hrDept);
     Permanent e2 = new Permanent("20001", "Jane", 21000, 1987, hrDept);
-    Temporary e3 = new Temporary("18002", "John", 30000, 1989, salesDept, "1/1/2000", "31/12/2000");
-    Temporary e4 = new Temporary("17001", "Mike", 35000, 1980, salesDept, "1/1/2010", "31/21/2010");
+    Temporary e3 = new Temporary("18002", "John", 30000, 1989, salesDept, "01/01/2000", "31/12/2000");
+    Temporary e4 = new Temporary("17001", "Mike", 35000, 1980, salesDept, "01/01/2010", "31/21/2010");
     Permanent e5 = new Permanent("25001", "Bill", 25000, 1991, seDept);
-    Permanent e6 = new Permanent("25002", "Bell", 23000, 1995, seDept);
+    Temporary e6 = new Temporary("25002", "Bell", 23000, 1995, seDept, "01/12/2021", "31/03/2022");
 
     ArrayList<Employee> employees = new ArrayList<Employee>();
     employees.add(e1);
