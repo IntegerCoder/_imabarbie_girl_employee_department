@@ -197,7 +197,7 @@ public class TestProgram {
     for (Project project : projects) {
       Map<String, Employee> employees = project.getEmployees();
       String projectTemplate = "          %19s: %s\n";
-      System.out.printf("   Project %s\n", project.getName());
+      System.out.printf("   Project: %s\n", project.getName());
       System.out.println(line1);
       System.out.printf(projectTemplate, "ID", project.getId());
       System.out.printf(projectTemplate, "Name", project.getName());
